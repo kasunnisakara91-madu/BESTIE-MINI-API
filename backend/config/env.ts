@@ -31,7 +31,7 @@ export const config: AppConfig = {
 export function isApiKeyConfigured(): boolean {
   return Boolean(
     config.upstreamApiKey &&
-      config.upstreamApiKey !== 'YOUR_API_KEY_HERE' &&
+      config.upstreamApiKey !== 'lakiya_6997a3ed7498d2a6415c35e276493a72ea8a087bb8207263f0b21431c0c24f02' &&
       config.upstreamApiKey.length > 8,
   );
 }
