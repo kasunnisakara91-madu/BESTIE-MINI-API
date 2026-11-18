@@ -351,7 +351,7 @@ export const API_ENDPOINTS: ApiEndpointDefinition[] = [
     name: 'Cinesubz Movie Download',
     method: 'GET',
     path: '/dl/cinesubz',
-    upstreamPath: '/movie/cinesubz',
+    upstreamPath: '/cinesubz/download',
     description: 'Resolve a Cinesubz zt-links download page into direct file download mirrors.',
     params: [
       {
@@ -359,7 +359,7 @@ export const API_ENDPOINTS: ApiEndpointDefinition[] = [
         type: 'url',
         required: true,
         description: 'Cinesubz download link URL (zt-links).',
-        example: 'https://cinesubz.net/zt-links/nvm2e3d9ep/',
+        example: 'https://cinesubz.net/zt-links/sijbwiuvaa/',
       },
     ],
     exampleResponse: {

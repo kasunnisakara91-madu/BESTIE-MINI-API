@@ -18,14 +18,19 @@ function parsePositiveInt(raw: string | undefined, fallback: number): number {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
+function cleanEnvValue(raw: string | undefined): string {
+  if (!raw) return '';
+  return raw.trim().replace(/^["']|["']$/g, '');
+}
+
 export const config: AppConfig = {
   port: parsePositiveInt(process.env.PORT, 3000),
   nodeEnv: process.env.NODE_ENV || 'development',
-  upstreamBaseUrl: (process.env.LAKIYA_API_BASE_URL || 'https://zara.laksidu.site').replace(/\/+$/, ''),
-  upstreamApiKey: (process.env.LAKIYA_API_KEY || '').trim(),
+  upstreamBaseUrl: (cleanEnvValue(process.env.LAKIYA_API_BASE_URL) || 'https://zara.laksidu.site').replace(/\/+$/, ''),
+  upstreamApiKey: cleanEnvValue(process.env.LAKIYA_API_KEY),
   rateLimitWindowMs: parsePositiveInt(process.env.RATE_LIMIT_WINDOW_MS, 60_000),
   rateLimitMaxRequests: parsePositiveInt(process.env.RATE_LIMIT_MAX_REQUESTS, 120),
-  requestTimeoutMs: 15_000,
+  requestTimeoutMs: 28_000,
 };
 
 export function isApiKeyConfigured(): boolean {
