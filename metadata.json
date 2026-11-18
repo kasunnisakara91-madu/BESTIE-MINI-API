@@ -1,0 +1,6 @@
+{
+  "name": "BESTIE MINI API",
+  "description": "Production API gateway, developer documentation, and live testing console for media, subtitle, educational, and audio extraction endpoints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
