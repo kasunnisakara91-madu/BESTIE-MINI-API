@@ -1,0 +1,47 @@
+{
+  "name": "BESTIE MINI API",
+  "description": "Production API gateway, developer documentation, and live testing console built with Node.js, Express.js, and React.",
+  "keywords": [
+    "nodejs",
+    "express",
+    "react",
+    "api-gateway",
+    "bestie-mini-api"
+  ],
+  "stack": "heroku-24",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node runtime environment",
+      "value": "production"
+    },
+    "LAKIYA_API_BASE_URL": {
+      "description": "Upstream API provider base URL",
+      "value": "https://zara.laksidu.site"
+    },
+    "LAKIYA_API_KEY": {
+      "description": "Private upstream API key used strictly on the backend",
+      "required": true
+    },
+    "RATE_LIMIT_WINDOW_MS": {
+      "description": "Rate limiter window in milliseconds",
+      "value": "60000",
+      "required": false
+    },
+    "RATE_LIMIT_MAX_REQUESTS": {
+      "description": "Max API requests per IP per window",
+      "value": "120",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
+}

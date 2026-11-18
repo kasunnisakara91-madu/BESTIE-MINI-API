@@ -1,6 +1,6 @@
 # BESTIE MINI API
 
-Production-ready API proxy gateway, developer documentation portal, and interactive testing console built with **Node.js**, **Express.js**, **React**, and **Tailwind CSS**, ready for Railway deployment.
+Production-ready API proxy gateway, developer documentation portal, and interactive testing console built with **Node.js**, **Express.js**, **React**, and **Tailwind CSS**, ready for **Heroku** and **Railway** deployment.
 
 ## Architecture
 
@@ -38,12 +38,37 @@ Production-ready API proxy gateway, developer documentation portal, and interact
    npm run dev
    ```
 
+## Heroku Deployment
+
+The project includes `Procfile`, `app.json`, and `engines.node: "22.x"` in `package.json` for zero-config Heroku deployment:
+
+1. Create a Heroku app:
+   ```bash
+   heroku create bestie-mini-api
+   ```
+2. Set required Heroku Config Vars:
+   ```bash
+   heroku config:set NODE_ENV=production
+   heroku config:set LAKIYA_API_BASE_URL=https://zara.laksidu.site
+   heroku config:set LAKIYA_API_KEY=YOUR_API_KEY_HERE
+   ```
+3. Push to Heroku:
+   ```bash
+   git add .
+   git commit -m "Deploy BESTIE MINI API to Heroku"
+   git push heroku main
+   ```
+4. Verify deployment:
+   - Heroku runs `npm run build` (`vite build`) automatically during the slug build.
+   - `Procfile` executes `web: npm start` (`node server.ts`), binding to Heroku's dynamic `$PORT` with `trust proxy` enabled.
+   - Health endpoint: `GET /health`.
+
 ## Railway Deployment
 
 1. Connect your repository to Railway.
 2. Configure Railway **Variables**:
    - `NODE_ENV=production`
    - `LAKIYA_API_BASE_URL=https://zara.laksidu.site`
-   - `LAKIYA_API_KEY=your_private_api_key`
-3. Railway uses `npm run build` (`vite build`) and `Procfile` (`web: npm start`, running `node server.ts` on `process.env.PORT`).
+   - `LAKIYA_API_KEY=YOUR_API_KEY_HERE`
+3. Railway uses `npm run build` (`vite build`) and `Procfile` (`web: npm start`).
 4. Health check endpoint: `GET /health`.
